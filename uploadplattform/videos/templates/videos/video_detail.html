@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'hauptseite/style.css' %}">        
+    <title>{{ video.title }}</title>
+</head>
+<body>
+    <h1>{{ video.title }}</h1>
+    <video width="640" height="360" controls>
+        <source src="{{ video.video_file.url }}" type="video/mp4">
+        Your browser doesn't support this format
+    </video>
+    <p>{{ video.description }}</p>
+    <p><a href="{% url 'for_you' %}">← Back To the menu</a></p>
+</body>
+</html>

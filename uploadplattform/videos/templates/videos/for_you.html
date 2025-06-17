@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'hauptseite/style.css' %}">    
+    <title>Main Page</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Video-Upload page</h1>
+        </div>
+
+        <div>
+            <button onclick="window.location.href='http://127.0.0.1:8000/upload';">Upload</button>
+            <button onclick="window.location.href='http://127.0.0.1:8000/login';">Login</button>
+        </div>
+    </header>
+
+    <div class="for_you_div">
+
+    {% for video in videos %}
+        <div style="margin-bottom: 20px;">
+            <a href="{% url 'video_detail' video.id %}">
+                {% if video.thumbnail %}
+                    <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}" width="300">
+                {% else %}
+                    <p>[No Thumbnail available]</p>
+                {% endif %}
+                <h3>{{ video.title }}</h3>
+            </a>
+        </div>
+    {% endfor %}
+
+    </div>
+
+    <footer>
+        <button onclick="window.location.href='http://127.0.0.1:8000/';">Home</button>
+        <button  onclick="window.location.href='http://127.0.0.1:8000/about';">About</button>
+    </footer>
+
+</body>
+</html>

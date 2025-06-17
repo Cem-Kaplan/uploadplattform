@@ -39,3 +39,15 @@ button:hover {
 button:left {
     background-color: rgb(59, 59, 59);
 }
+
+.for_you_div {
+    display: flex;
+    flex-wrap: wrap; /* erlaubt Umbruch */
+    gap: 13px; /* Abstand zwischen den Bildern */
+}
+
+.for_you_div div a img {
+    width: 340px;
+    height: 200px;
+    object-fit: cover; /* Bild wird passend zugeschnitten */
+}
