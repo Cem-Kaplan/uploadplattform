@@ -8,3 +8,6 @@ def for_you_page(request):
 def video_detail(request, video_id):
     video = get_object_or_404(Video, id=video_id)
     return render(request, 'videos/video_detail.html', {'video': video})
+
+def upload(request):
+    return render(request, 'videos/upload.html')
