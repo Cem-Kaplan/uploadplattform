@@ -3,16 +3,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{% static 'hauptseite/style.css' %}">        
+    <link rel="stylesheet" href="{% static 'videos/style.css' %}">        
     <title>{{ video.title }}</title>
 </head>
 <body>
-    <h1>{{ video.title }}</h1>
-    <video width="640" height="360" controls>
-        <source src="{{ video.video_file.url }}" type="video/mp4">
-        Your browser doesn't support this format
-    </video>
-    <p>{{ video.description }}</p>
-    <p><a href="{% url 'for_you' %}">← Back To the menu</a></p>
+    <header>
+        <div>
+            <h1><a href="{% url 'for_you' %}">Video-Upload page</a></h1>
+        </div>
+    </header>
+    
+
+    <div style="display: flex">
+        <video width="60%" height="430" controls style="margin: 10px;">
+            <source src="{{ video.video_file.url }}" type="video/mp4">
+            Your browser doesn't support this format
+            Ihr Browser unterstützt nicht dieses Format
+        </video>
+        <div style="margin: 10px; width: 35%;">
+            <h1>{{ video.title }}</h1>
+            <div class="likes_frame">
+                <p>Likes: Unknown</p>
+            </div>
+            <p>{{ video.description }}</p>
+        </div>
+    </div>
+
+    <div class="for_you_div">
+
+    {% for video in videos %}
+        <div style="margin-bottom: 20px;">
+            <a href="{% url 'video_detail' video.id %}">
+                {% if video.thumbnail %}
+                    <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}" width="300">
+                {% else %}
+                    <p>[No Thumbnail available]</p>
+                {% endif %}
+                <h3>{{ video.title }}</h3>
+            </a>
+        </div>
+    {% endfor %}
+
+    </div>
+
 </body>
 </html>

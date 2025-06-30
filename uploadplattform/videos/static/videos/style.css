@@ -44,10 +44,18 @@ button:left {
     display: flex;
     flex-wrap: wrap; /* erlaubt Umbruch */
     gap: 13px; /* Abstand zwischen den Bildern */
+    margin: 10px;
 }
 
 .for_you_div div a img {
     width: 340px;
     height: 200px;
     object-fit: cover; /* Bild wird passend zugeschnitten */
+}
+
+.likes_frame {
+    background-color: rgba(255, 255, 255, 0.025);
+    border-radius: 15px;
+    width: 75%;
+    height: 25px;
 }
